@@ -60,13 +60,13 @@ angular.module('app.marketplace').controller('marketplaceAddServiceCtrl', ['$q',
 
       var objectService = {
         id: service.metadata.guid,
-        name: (extraData.displayName) ? extraData.displayName : service.entity.label,
+        name: (extraData && extraData.displayName) ? extraData.displayName : service.entity.label,
         description: service.entity.description,
-        longDescription: (extraData.longDescription) ? extraData.longDescription : service.entity.long_description,
-        provider: (extraData.providerDisplayName) ? extraData.providerDisplayName : service.entity.provider,
-        imageUrl: (extraData.imageUrl) ? extraData.imageUrl : null,
-        documentationUrl: (extraData.documentationUrl) ? extraData.documentationUrl : service.entity.documentation_url,
-        supportUrl: (extraData.supportUrl) ? extraData.supportUrl : null
+        longDescription: (extraData && extraData.longDescription) ? extraData.longDescription : service.entity.long_description,
+        provider: (extraData && extraData.providerDisplayName) ? extraData.providerDisplayName : service.entity.provider,
+        imageUrl: (extraData && extraData.imageUrl) ? extraData.imageUrl : null,
+        documentationUrl: (extraData && extraData.documentationUrl) ? extraData.documentationUrl : service.entity.documentation_url,
+        supportUrl: (extraData && extraData.supportUrl) ? extraData.supportUrl : null
       };
 
       $scope.services.push(objectService);
