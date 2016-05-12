@@ -1,0 +1,9 @@
+language: bash
+sudo: required
+services:
+  - docker
+before_script:
+  - cd ..
+script:
+  - chmod ugo+x cf-webui/ci/*.sh
+  - docker run -it -v $(pwd):/root/sources -w /root/sources node:6 cf-webui/ci/build.sh
