@@ -3,8 +3,8 @@
 set -e
 OUTPUT="$PWD/cf-webui-app"
 
-echo "DEBUG - OUTPUT: <$OUTPUT> - VERSION: <$VERSION>"
-mkdir -p $OUTPUT
+echo "DEBUG - OUTPUT: <$OUTPUT>"
+mkdir -p $OUTPUT/build
 
 
 pushd cf-webui
@@ -12,7 +12,8 @@ pushd cf-webui
     npm install grunt-cli
     export PATH=$PWD/node_modules/grunt-cli/bin:$PATH
     grunt build
-    cp -R build/* $OUTPUT
+    cp -R build/* $OUTPUT/build
+    cp manifest.yml $OUTPUT/
 popd
 
 
