@@ -1,0 +1,33 @@
+---
+resources:
+- name: cf-webui
+  type: git
+  source:
+    uri: {{cf-webui-git-url}}
+    branch: {{cf-webui-git-branch}}
+
+- name: resource-deploy-cf-webui
+  type: cf
+#https://github.com/concourse/cf-resource
+  source:
+    api: {{cf-api-endpoint}}
+    username: {{cf-username}}
+    password: {{cf-userpassword}}
+    organization: {{cf-org}}
+    space: {{cf-space}}
+    skip_cert_check: true
+
+jobs:
+- name: job-cf-webui
+  plan:
+  - get: cf-webui
+    trigger: true
+    attempts: 3
+  - task: build
+    file: cf-webui/ci/build.yml
+  - put: resource-deploy-cf-webui
+    params:
+      manifest: cf-webui-app/manifest.yml
+      environment_variables:
+        API_ENDPOINT: {{cf-api-endpoint}}
+        NGINX_RESOLVER: {{ngnix-resolver}}
