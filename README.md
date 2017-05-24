@@ -1,4 +1,4 @@
-# CF WebUI
+# CF WebUI  [![Build Status](https://travis-ci.org/orange-cloudfoundry/cf-webui.svg?branch=master)](https://travis-ci.org/orange-cloudfoundry/cf-webui)
 
 [CF WebUI](https://icclab.github.io/cf-webui) is a modern single-page web-frontend for Cloud Foundry based on AngularJS and Bootstrap.
 
