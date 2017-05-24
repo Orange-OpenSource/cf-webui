@@ -8,7 +8,7 @@ script:
 - grunt build
 before_deploy:
 - mv build cf-webui
-- tar xzvf cf-webui-${TRAVIS_TAG}.tgz cf-webui
+- tar czvf cf-webui-${TRAVIS_TAG}.tgz cf-webui
 deploy:
   skip_cleanup: true
   provider: releases
