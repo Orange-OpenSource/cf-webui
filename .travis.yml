@@ -9,12 +9,16 @@ script:
 before_deploy:
 - mv build cf-webui
 - tar czvf cf-webui-${TRAVIS_TAG}.tgz cf-webui
+- sha512sum cf-webui-${TRAVIS_TAG}.tgz > cf-webui-${TRAVIS_TAG}.tgz.sha512
 deploy:
   skip_cleanup: true
   provider: releases
   api_key:
     secure: L8w2QEogWsNdMBGHEhwhMlzEzNiKSCjy5nQefa2PidXxPKotRI00/lBve1+BH6GLNfpLfRDpZU0OkgmzyofrwT3ONl2ppBrwneXfHOoKnQwa9ZsLi/rZuBQL0+lYd1e8gt+d+xq5qVJ2UfKDh041N05fb8a2kKZishFV3IP/Gc/VdXgKBcooLbX2guaxlF+DwgrAmB+mCvF0eWgzWP8RDujojbZe6dD2YrOgVONHsAPp0JY17vIlU0unBTmVBRRc5r9MmtS9EB54xlHF8SQr4XgB4D3Rrx1JjymX06h4LJ7FeBtu7cV4Ru94/R3wsfWPoUgvLTbYjB2RZS40xImZfmXqTVoiMb6aO9m0bIPW/MFpkeNiXuHZjEwg1oHM0cjXgJvw+qDf22KhS6/hcKs8qCwqsl259EWICJ8YMyYAYKgpAv3nWaCC93OZA+6OoVMP3SReTUxJmtI0kyXmuMaW3+mO82hEYJx+XhvkxcMI8NztmBzvmb5dQ0GEocujr1TgJ6mUWOm8BsUrbWRwmOPxLcMMMhMlCsw1dVb4C3q4mPF/DxQxAnIfpwFWFN0QX4aSuAAq1YWZrvP8XftNYOMwTEMV8ZYQ5CFGeVC+LYU1kUNPT3IKKfCzG4yHerr3LawRgxSqZcMcYJygx2DNdtx/aN2/NYmmDKxS+Ce55nbxvbs=
-  file: cf-webui-${TRAVIS_TAG}.tgz
+  file:
+  - cf-webui-${TRAVIS_TAG}.tgz
+  - cf-webui-${TRAVIS_TAG}.tgz.sha512
+
   on:
-    tag: true
+    tags: true
     repo: orange-cloudfoundry/cf-webui
