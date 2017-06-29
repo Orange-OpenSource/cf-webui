@@ -116,14 +116,20 @@ angular.module('app.space').controller('SpaceDetailsCtrl', ['$rootScope', '$scop
         $scope.nrOfServices = response.data.services.length;
 
         angular.forEach(response.data.services, function(service, i) {
+          var serviceLabel='';
+          var service_planName='';
+          if (service.service_plan) {
+            serviceLabel=service.service_plan.service.label;
+            service_planName=', ' + service.service_plan.name;
+          }
           var objectService = {
             id: service.guid,
             name: service.name,
-            servicePlan: service.service_plan.service.label + ', ' + service.service_plan.name,
+            servicePlan: serviceLabel + service_planName,
             nrOfBoundApps: service.bound_app_count,
             dashboardUrl: service.dashboard_url,
-            supportURL:'https://support.'+service.service_plan.service.label+'.com/',
-            docsURL: 'http://docs.run.pivotal.io/marketplace/services/'+service.service_plan.service.label+'.html'
+            supportURL:'https://support.'+serviceLabel+'.com/',
+            docsURL: 'http://docs.run.pivotal.io/marketplace/services/'+serviceLabel+'.html'
           };
 
           $scope.services.push(objectService);
