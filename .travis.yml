@@ -10,6 +10,8 @@ before_deploy:
 - mv build cf-webui
 - tar czvf cf-webui-${TRAVIS_TAG}.tgz cf-webui
 - sha512sum cf-webui-${TRAVIS_TAG}.tgz > cf-webui-${TRAVIS_TAG}.tgz.sha512
+- "cd cf-webui; zip -r  ../cf-webui-${TRAVIS_TAG}.zip *; cd .."
+- sha512sum cf-webui-${TRAVIS_TAG}.zip > cf-webui-${TRAVIS_TAG}.zip.sha512
 deploy:
   skip_cleanup: true
   provider: releases
@@ -18,6 +20,8 @@ deploy:
   file:
   - cf-webui-${TRAVIS_TAG}.tgz
   - cf-webui-${TRAVIS_TAG}.tgz.sha512
+  - cf-webui-${TRAVIS_TAG}.zip
+  - cf-webui-${TRAVIS_TAG}.zip.sha512
 
   on:
     tags: true
