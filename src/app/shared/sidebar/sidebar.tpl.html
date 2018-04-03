@@ -1,6 +1,11 @@
 <div id="page-sidebar" ng-controller="SidebarCtrl">
   <ul id="sidebar-navigation">
-    <li id="logo"><a href="#">CF WebUI for Orange</a></li>
+    <li>
+      <a href="#" class="sidebar-logo" style="padding:2px 2px 2px 5px;">
+        <img alt="Cloud Foundry UI by Orange" src="assets/images/c1a7564.logo.png">
+      </a>
+    </li>
+
     <li ng-repeat="organizationSidebar in organizationsSidebar" class="fadein" ng-show="rootFields.showContent">
       <a href="#" ng-class="{active: isActive('/organizations/' + organizationSidebar.id)}" toggle-subnavi>{{organizationSidebar.name}}</a>
       <ul>
