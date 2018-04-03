@@ -5,7 +5,9 @@
   color: @sidebar-text-color;
   height: 100%;
 }
-
+.sidebar-logo {
+  height: 50px;
+}
 #sidebar-navigation,
 #sidebar-navigation ul {
   display: block;
@@ -22,7 +24,7 @@
     width: 100%;
     
     &.title {
-      border-bottom: 1px solid #2f3c48;
+      border-bottom: 1px solid #404040;
       color: #999;
       font-size: 13px;
       font-weight: 300;
@@ -39,13 +41,13 @@
     }
     
     > a { /* links of 1st level */
-      border-bottom: 1px solid #2f3c48;
+      border-bottom: 1px solid #404040;
       color: @sidebar-text-color;
       padding: 15px 10px 15px 15px;
       
       &:hover,
       &.active {
-        background-color: #3d4e5d;
+        background-color: #808080;
         transition: all 200ms ease 0s;
       }
     }
@@ -59,14 +61,14 @@
     }
       
     ul li > a { /* links of 2nd level */
-      border-bottom: 1px solid #23303b;
-      background-color: #273541;
+      border-bottom: 1px solid #404040;
+      background-color: #595959;
       color: #ccc;
       padding: 15px 10px 15px 30px;
       
       &:hover,
       &.active {
-        background-color: #23303b;
+        background-color: #404040;
       }
     }
   }
